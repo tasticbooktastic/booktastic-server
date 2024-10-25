@@ -1,7 +1,7 @@
 <?php
 
 # Run on backup server to recover a user from a backup to the live system.  Use with astonishing levels of caution.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

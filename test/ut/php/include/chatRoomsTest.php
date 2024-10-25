@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -124,7 +124,7 @@ class chatRoomsTest extends IznikTestCase {
         );
 
         $r = new ChatRoom($this->dbhr, $this->dbhm);
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([
                 "mysql:host={$dbconfig['host']};dbname={$dbconfig['database']};charset=utf8",
                 $dbconfig['user'], $dbconfig['pass'], array(), TRUE
@@ -206,7 +206,7 @@ class chatRoomsTest extends IznikTestCase {
 
         # Exception first for coverage.
         $this->log("Fake exception");
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('constructSwiftMessage'))
             ->getMock();
@@ -218,7 +218,7 @@ class chatRoomsTest extends IznikTestCase {
         # We will have flagged this message as mailed to all even though we failed.
         $this->dbhm->preExec("UPDATE chat_messages SET mailedtoall = 0 WHERE id = ?;", [ $cm ]);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -344,7 +344,7 @@ class chatRoomsTest extends IznikTestCase {
         $this->assertEquals(MailRouter::TO_USER, $rc);
 
         # Now check that it isn't notified.
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -365,7 +365,7 @@ class chatRoomsTest extends IznikTestCase {
         $rc = $mr->route();
         $this->assertEquals(MailRouter::TO_USER, $rc);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -431,7 +431,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm2id, $banned) = $m->create($id, $u1, "Test u1 -> u2 2");
         $this->log("u1 $u1 sent CM1 $cm1id, CM2 $cm2id to $u2");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -471,7 +471,7 @@ class chatRoomsTest extends IznikTestCase {
         $r = new ChatRoom($this->dbhr, $this->dbhm);
         list ($id, $blocked) = $r->createConversation($u1, $u2);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -531,7 +531,7 @@ class chatRoomsTest extends IznikTestCase {
         $r = new ChatRoom($this->dbhr, $this->dbhm);
         list ($id, $blocked) = $r->createConversation($u1, $u2);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -600,7 +600,7 @@ class chatRoomsTest extends IznikTestCase {
         $m = new ChatMessage($this->dbhr, $this->dbhm, $cm);
         $this->assertNotFalse(Utils::pres('address', $m->getPublic()));
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -642,7 +642,7 @@ class chatRoomsTest extends IznikTestCase {
 
         global $dbconfig;
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('preExec'))
             ->getMock();
@@ -713,7 +713,7 @@ class chatRoomsTest extends IznikTestCase {
         # Mark the query as seen by one mod.
         $r->updateRoster($u3, $cm, ChatRoom::STATUS_ONLINE);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -768,7 +768,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, "Help me", ChatMessage::TYPE_DEFAULT, NULL, TRUE);
         $this->log("Created chat message $cm");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -815,7 +815,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, "Help me", ChatMessage::TYPE_DEFAULT, NULL, TRUE);
         $this->log("Created chat message $cm");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -863,7 +863,7 @@ class chatRoomsTest extends IznikTestCase {
         $m->setPrivate('reviewrequired', 1);
         $this->log("Created chat message $cm");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -941,7 +941,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($mid, $banned) = $m->create($id, $u2, "Test", ChatMessage::TYPE_DEFAULT, NULL, $platform);
 
         # Check that this message doesn't get notified.
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1026,7 +1026,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, "Testing", ChatMessage::TYPE_DEFAULT, NULL, TRUE, NULL, NULL, NULL, NULL);
         $this->log("Created chat message $cm");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1159,7 +1159,7 @@ class chatRoomsTest extends IznikTestCase {
         $m = new ChatMessage($this->dbhr, $this->dbhm);
         list ($cm2, $banned) = $m->create($rid, $u2, "Here's some help", ChatMessage::TYPE_MODMAIL, NULL, TRUE);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, NULL))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1202,7 +1202,7 @@ class chatRoomsTest extends IznikTestCase {
         # Mark it as requiring review.
         $m->setPrivate('reviewrequired', 1);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1257,7 +1257,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, NULL, ChatMessage::TYPE_IMAGE, NULL, TRUE, NULL, NULL, NULL, $attid);
         $this->log("Created chat message $cm");
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1303,7 +1303,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, "test3", ChatMessage::TYPE_PROMISED, NULL, FALSE);
         $this->assertNotNull($cm);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1368,7 +1368,7 @@ class chatRoomsTest extends IznikTestCase {
         $rc = $mr->route();
         $this->assertEquals(MailRouter::TO_USER, $rc);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1415,7 +1415,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cm, $banned) = $m->create($id, $u1, "test from u1", ChatMessage::TYPE_DEFAULT, NULL, TRUE);
         $this->assertNotNull($cm);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1553,7 +1553,7 @@ class chatRoomsTest extends IznikTestCase {
         list ($cmid3, $banned) = $m->create($id, $u1, "test3", ChatMessage::TYPE_DEFAULT, NULL, FALSE, NULL, NULL, NULL, NULL, NULL, FALSE, FALSE, FALSE);
         $this->assertNotNull($cmid3);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1639,7 +1639,7 @@ class chatRoomsTest extends IznikTestCase {
         $m->setPrivate('replyexpected', $expected);
 
         # Notify it.
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -1706,7 +1706,7 @@ class chatRoomsTest extends IznikTestCase {
 
         $m->backgroundMark(Message::OUTCOME_TAKEN, NULL, NULL, NULL, NULL);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $rid))
             ->setMethods(array('mailer'))
             ->getMock();

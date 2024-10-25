@@ -1,7 +1,7 @@
 <?php
 # Percona has column compression using a dictionary.  This script scans a column in a table to suggest a dictionary
 # based on word frequency.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

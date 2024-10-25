@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -250,7 +250,7 @@ class ModConfigTest extends IznikTestCase {
     }
 
     public function testErrors() {
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->disableOriginalConstructor()
             ->setMethods(array('preExec', 'preQuery'))
             ->getMock();

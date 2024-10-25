@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -58,7 +58,7 @@ class GoogleTest extends IznikTestCase {
         $this->assertEquals(2, $ret['ret']);
 
         # Basic successful login
-        $mock = $this->getMockBuilder('Freegle\Iznik\Google')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Google')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, FALSE])
             ->setMethods(array('getClient', 'getUserDetails'))
             ->getMock();

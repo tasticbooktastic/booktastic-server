@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 class Story extends Entity
 {

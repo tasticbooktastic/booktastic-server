@@ -3,7 +3,7 @@
 // bulk3 scripts/cron/get_app_release_versions.php
 // This script fetches the latest app version numbers from the app stores - doing in the apps themselves runs into CORS
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

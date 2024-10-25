@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -67,7 +67,7 @@ class eventDigestTest extends IznikTestCase {
         # Now test.
 
         # Send fails
-        $mock = $this->getMockBuilder('Freegle\Iznik\EventDigest')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\EventDigest')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, TRUE])
             ->setMethods(array('sendOne'))
             ->getMock();
@@ -75,7 +75,7 @@ class eventDigestTest extends IznikTestCase {
         $this->assertEquals(0, $mock->send($gid));
 
         # Mock the actual send
-        $mock = $this->getMockBuilder('Freegle\Iznik\EventDigest')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\EventDigest')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, TRUE])
             ->setMethods(array('sendOne'))
             ->getMock();

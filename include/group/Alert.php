@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 
 require_once(IZNIK_BASE . '/mailtemplates/alert.php');

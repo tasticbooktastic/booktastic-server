@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 use Eluceo\iCal\Component\Calendar;
 use Eluceo\iCal\Component\Event;

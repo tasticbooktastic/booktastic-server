@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -65,7 +65,7 @@ class AlertTest extends IznikTestCase {
 
         global $dbconfig;
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('preExec'))
             ->getMock();
@@ -74,7 +74,7 @@ class AlertTest extends IznikTestCase {
 
         self::assertEquals(0, $a->mailMods($id, $gid));
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('lastInsertId'))
             ->getMock();

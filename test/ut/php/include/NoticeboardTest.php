@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -36,7 +36,7 @@ class NoticeboardTest extends IznikTestCase {
 
         $id = $n->create('UTTest', 52, -1, $id, NULL);
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Noticeboard')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Noticeboard')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -76,7 +76,7 @@ class NoticeboardTest extends IznikTestCase {
 
         $id = $n->create('UTTest', 8.4, 179.15, $id, NULL);
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Noticeboard')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Noticeboard')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();

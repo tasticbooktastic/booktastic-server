@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -219,7 +219,7 @@ class newsfeedAPITest extends IznikAPITestCase {
         $this->assertEquals(0, $ret['ret']);
 
         # Should mail out to the other user.
-        $n = $this->getMockBuilder('Freegle\Iznik\Newsfeed')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Newsfeed')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -776,7 +776,7 @@ class newsfeedAPITest extends IznikAPITestCase {
         $this->log("Created feed {$ret['id']}");
         $nid = $ret['id'];
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Newsfeed')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Newsfeed')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();

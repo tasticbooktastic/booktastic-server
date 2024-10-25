@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 function noticeboard() {
     global $dbhr, $dbhm;

@@ -1,7 +1,7 @@
 <?php
 
 # Send test digest to a specific user
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 # Fake user site.
 # TODO Messy.

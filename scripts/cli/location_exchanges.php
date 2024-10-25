@@ -3,7 +3,7 @@
 # Given a WKT polygon, look for the users whose home location is within that polygon.  Then find where x% of them have
 # they have received or given messages.  This helps us identify the areas which derive from the behaviour of the members.
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

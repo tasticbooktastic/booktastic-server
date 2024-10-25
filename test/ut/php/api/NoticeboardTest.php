@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -111,7 +111,7 @@ class noticeboardAPITest extends IznikAPITestCase {
         $this->assertEquals(180.2167, $ret['noticeboard']['lng']);
         $this->assertEquals(0, count($ret['noticeboard']['checks']));
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Noticeboard')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Noticeboard')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();

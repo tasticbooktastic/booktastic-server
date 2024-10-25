@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -49,7 +49,7 @@ class AppleTest extends IznikTestCase {
         # Basic successful login
         $this->email = 'test@test.com';
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\Apple')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Apple')
             ->setMethods(['getPayload'])
             ->setConstructorArgs([$this->dbhr, $this->dbhm])
             ->getMock();
@@ -126,7 +126,7 @@ class AppleTest extends IznikTestCase {
         # Basic successful login
         $this->email = 'test@test.com';
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\Apple')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Apple')
             ->setMethods(['getPayload'])
             ->setConstructorArgs([$this->dbhr, $this->dbhm])
             ->getMock();

@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 use Minishlink\WebPush\WebPush;
 use Minishlink\WebPush\Subscription;

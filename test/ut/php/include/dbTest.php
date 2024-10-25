@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 use PhpMimeMailParser\Exception;
 use Pheanstalk\Pheanstalk;
@@ -178,7 +178,7 @@ class dbTest extends IznikTestCase {
         # We mock up the query to throw an exception, to test retries.
         #
         # First a non-deadlock exception
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentQuery'))
             ->getMock();
@@ -195,7 +195,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that never gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentQuery'))
             ->getMock();
@@ -211,7 +211,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentQuery'))
             ->getMock();
@@ -225,7 +225,7 @@ class dbTest extends IznikTestCase {
         # Now a deadlock within a transaction.
         $this->log("Deadlock in transaction");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentQuery'))
             ->getMock();
@@ -248,7 +248,7 @@ class dbTest extends IznikTestCase {
 
         $this->log("query returns false");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentQuery', 'errorInfo'))
             ->getMock();
@@ -267,7 +267,7 @@ class dbTest extends IznikTestCase {
         # We mock up the query to throw an exception, to test retries.
         #
         # First a non-deadlock exception
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentExec'))
             ->getMock();
@@ -284,7 +284,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that never gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentExec'))
             ->getMock();
@@ -300,7 +300,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentExec'))
             ->getMock();
@@ -314,7 +314,7 @@ class dbTest extends IznikTestCase {
         # Now a failure in the return code
         $this->log("query returns false");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentExec', 'errorInfo'))
             ->getMock();
@@ -326,7 +326,7 @@ class dbTest extends IznikTestCase {
 
         $mock->retryExec('INSERT INTO test VALUES ();');
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('executeStatement', 'getErrorInfo'))
             ->getMock();
@@ -415,7 +415,7 @@ class dbTest extends IznikTestCase {
         # We mock up the query to throw an exception, to test retries.
         #
         # First a non-deadlock exception
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs(array($dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE))
             ->setMethods(array('parentPrepare'))
             ->getMock();
@@ -434,7 +434,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that never gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentPrepare'))
             ->getMock();
@@ -450,7 +450,7 @@ class dbTest extends IznikTestCase {
         $this->assertTrue($worked);
 
         # Now a deadlock that gets resolved
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('parentPrepare'))
             ->getMock();
@@ -487,7 +487,7 @@ class dbTest extends IznikTestCase {
     public function testRetryable() {
         global $dbconfig;
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('executeStatement'))
             ->getMock();

@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -116,7 +116,7 @@ class trystTest extends IznikAPITestCase {
         $this->assertEquals(2, $ret['ret']);
 
         # Send the invites, mocking out the mail.
-        $t = $this->getMockBuilder('Freegle\Iznik\Tryst')
+        $t = $this->getMockBuilder('Booktastic\Iznik\Tryst')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('sendIt'))
             ->getMock();

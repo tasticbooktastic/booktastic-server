@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 # This holds info about the different kinds of mails we send.
 class Mail {

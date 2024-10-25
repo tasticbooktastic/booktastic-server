@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 class Tus {
     public static function upload($url, $mime = "image/webp", $data = NULL) {

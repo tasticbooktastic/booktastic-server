@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 # When people donate to us, PayPal will trigger a call to this script.
 #

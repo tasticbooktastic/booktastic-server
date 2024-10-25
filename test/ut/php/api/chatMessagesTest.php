@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -767,7 +767,7 @@ class chatMessagesAPITest extends IznikAPITestCase
         $rid = $ret['id'];
         $this->assertNotNull($rid);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $rid))
             ->setMethods(array('mailer'))
             ->getMock();
@@ -840,7 +840,7 @@ class chatMessagesAPITest extends IznikAPITestCase
         $rid = $ret['id'];
         $this->assertNotNull($rid);
 
-        $r = $this->getMockBuilder('Freegle\Iznik\ChatRoom')
+        $r = $this->getMockBuilder('Booktastic\Iznik\ChatRoom')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $rid))
             ->setMethods(array('mailer'))
             ->getMock();

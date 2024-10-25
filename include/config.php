@@ -23,7 +23,7 @@ if (!defined('IZNIK_BASE')) {
         $class = $class_name;
 
         if ($p !== FALSE) {
-            $q = strpos($class_name, 'Freegle\Iznik');
+            $q = strpos($class_name, 'Booktastic\Iznik');
 
             if ($q === 0) {
                 $class = substr($class_name, $p + 1);

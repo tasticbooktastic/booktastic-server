@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 $dbconfig = array (
     'hosts_read' => SQLHOSTS_READ,

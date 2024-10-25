@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 function jobs() {
     # This proxies a request on to adview to avoid CORS issues.

@@ -17,7 +17,7 @@
 // 2022-06-25 Check if mod's preferred mail is TN
 // 2022-06-26 Change from native-login-id lookup to get by email instead
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 use \Datetime;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');

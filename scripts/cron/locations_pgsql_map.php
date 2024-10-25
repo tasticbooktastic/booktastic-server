@@ -1,7 +1,7 @@
 <?php
 # This creates a table in Postgres with the geometries from the locations table.  This is so that we can
 # explore Postgres' KNN function.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -91,7 +91,7 @@ class notificationsTest extends IznikTestCase {
         $email = 'test2@test.com';
         $this->log("Added email " . $u->addEmail($email));
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Notifications')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Notifications')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -238,7 +238,7 @@ class notificationsTest extends IznikTestCase {
         $email = 'test1@test.com';
         $this->log("Added email " . $u->addEmail($email) . " vs " . $u->getEmailPreferred());
 
-        $n = $this->getMockBuilder('Freegle\Iznik\Notifications')
+        $n = $this->getMockBuilder('Booktastic\Iznik\Notifications')
             ->setConstructorArgs(array($this->dbhm, $this->dbhm))
             ->setMethods(array('sendIt'))
             ->getMock();

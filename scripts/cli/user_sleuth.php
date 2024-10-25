@@ -1,6 +1,6 @@
 <?php
 # php user_sleuth.php -f "First Last" -s Last -p 50 -g 30 -d 2023-11-13
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -152,7 +152,7 @@ class sessionTest extends IznikAPITestCase
         $this->assertNotNull($u->addEmail('test@test.com'));
 
         # Mock the group ("your hair looks terrible") to check the welcome mail is sent.
-        $g = $this->getMockBuilder('Freegle\Iznik\Group')
+        $g = $this->getMockBuilder('Booktastic\Iznik\Group')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, $id])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -266,14 +266,14 @@ class sessionTest extends IznikAPITestCase
         $this->assertEquals(0, $ret['ret']);
 
         # Quick test for notification coverage.
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('curl_exec'))
             ->getMock();
         $mock->method('curl_exec')->willReturn('NotRegistered');
         $mock->notify($id, TRUE);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('uthook'))
             ->getMock();
@@ -572,7 +572,7 @@ class sessionTest extends IznikAPITestCase
         ]);
         $this->assertEquals(1, $ret['ret']);
 
-        $u = $this->getMockBuilder('Freegle\Iznik\User')
+        $u = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([$this->dbhm, $this->dbhm])
             ->setMethods(array('sendIt'))
             ->getMock();

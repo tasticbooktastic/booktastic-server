@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -239,7 +239,7 @@ class userTest extends IznikTestCase {
         $u = User::get($this->dbhr, $this->dbhm);
         $this->assertEquals(0, $u->addEmail('test-owner@yahoogroups.com'));
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->disableOriginalConstructor()
             ->setMethods(array('preExec'))
             ->getMock();
@@ -537,7 +537,7 @@ class userTest extends IznikTestCase {
 
         global $dbconfig;
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([$dbconfig['hosts_read'], $dbconfig['database'], $dbconfig['user'], $dbconfig['pass'], TRUE])
             ->setMethods(array('preExec'))
             ->getMock();
@@ -636,7 +636,7 @@ class userTest extends IznikTestCase {
         $group = $g->create('testgroup1', Group::GROUP_REUSE);
 
         # Suppress mails.
-        $u = $this->getMockBuilder('Freegle\Iznik\User')
+        $u = $this->getMockBuilder('Booktastic\Iznik\User')
         ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
         ->setMethods(array('mailer'))
         ->getMock();
@@ -846,7 +846,7 @@ class userTest extends IznikTestCase {
         $uid = $u->create('Test', 'User', NULL);
         $u->addEmail('test@test.com');
 
-        $s = $this->getMockBuilder('Freegle\Iznik\User')
+        $s = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm, $uid ])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -928,7 +928,7 @@ class userTest extends IznikTestCase {
     }
 
     public function testThank() {
-        $s = $this->getMockBuilder('Freegle\Iznik\User')
+        $s = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm ])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -947,7 +947,7 @@ class userTest extends IznikTestCase {
         $gid = $g->create('testgroup', Group::GROUP_REUSE);
 
         # Mock the group ("your hair looks terrible") to check the welcome mail is sent.
-        $g = $this->getMockBuilder('Freegle\Iznik\Group')
+        $g = $this->getMockBuilder('Booktastic\Iznik\Group')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, $gid])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -962,7 +962,7 @@ class userTest extends IznikTestCase {
         $uid = $u->create('Test', 'User', NULL);
         $u->addEmail('test@test.com');
 
-        $s = $this->getMockBuilder('Freegle\Iznik\User')
+        $s = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm, $uid ])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -978,7 +978,7 @@ class userTest extends IznikTestCase {
     }
 
     public function testInvite() {
-        $s = $this->getMockBuilder('Freegle\Iznik\User')
+        $s = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm ])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -1575,7 +1575,7 @@ class userTest extends IznikTestCase {
         $id = $u->create(NULL, NULL, 'Test User');
         $u->addEmail('test@test.com');
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\User')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, $id])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -1585,7 +1585,7 @@ class userTest extends IznikTestCase {
         $mock->mailer($u, NULL, "Test", "test@test.com", "test@test.com", "Test", "test@test.com", "Test", "Test");
         $this->assertEquals(1, count($this->msgsSent));
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\User')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\User')
             ->setConstructorArgs([$this->dbhm, $this->dbhm, $id])
             ->setMethods(array('sendIt'))
             ->getMock();

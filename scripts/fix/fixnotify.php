@@ -8,7 +8,7 @@ require_once(IZNIK_BASE . '/include/db.php');
 require_once(IZNIK_BASE . '/include/user/PushNotifications.php');
 require_once(IZNIK_BASE . '/include/group/Group.php');
 
-use Freegle\Iznik\PushNotifications as PushNotifications;
+use Booktastic\Iznik\PushNotifications as PushNotifications;
 
 $l = new PushNotifications($dbhr, $dbhm);
 #$g = Group::get($dbhr, $dbhm);

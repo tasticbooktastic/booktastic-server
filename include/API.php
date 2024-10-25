@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 
 require_once(IZNIK_BASE . '/include/db.php');

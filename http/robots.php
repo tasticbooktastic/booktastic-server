@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define( 'BASE_DIR', dirname(__FILE__) . '/..' );
 

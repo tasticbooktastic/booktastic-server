@@ -1,7 +1,7 @@
 <?php
 
 # Run on backup server to recover a modconfig from a backup to the live system.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

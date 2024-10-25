@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -98,7 +98,7 @@ class FacebookTest extends IznikTestCase {
 
     public function testBasic() {
         # Basic successful login
-        $mock = $this->getMockBuilder('Freegle\Iznik\Facebook')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Facebook')
             ->setConstructorArgs([$this->dbhr, $this->dbhm])
             ->setMethods(array('getFB'))
             ->getMock();
@@ -197,7 +197,7 @@ class FacebookTest extends IznikTestCase {
         $this->facebookName = 'Test User';
         $this->facebookEmail = 'test@test.com';
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\Facebook')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Facebook')
             ->setConstructorArgs([$this->dbhr, $this->dbhm])
             ->setMethods(array('getFB'))
             ->getMock();

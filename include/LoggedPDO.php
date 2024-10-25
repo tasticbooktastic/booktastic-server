@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 use Pheanstalk\Pheanstalk;
 use \PDO;
@@ -85,7 +85,7 @@ class LoggedPDO {
         $this->pheanstalk = $pheanstalk;
     }
 
-    public function __construct($hosts, $database, $username, $password, $readonly = FALSE, \Freegle\Iznik\LoggedPDO $readconn = NULL, $variant = 'mysql')
+    public function __construct($hosts, $database, $username, $password, $readonly = FALSE, \Booktastic\Iznik\LoggedPDO $readconn = NULL, $variant = 'mysql')
     {
         $this->hosts = explode(',', $hosts);
         $this->variant = $variant;

@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 # We include this directly because the composer version isn't quite right for us - see
 # https://github.com/php-mime-mail-parser/php-mime-mail-parser/issues/163

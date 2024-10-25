@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 $scriptstart = microtime(false);
 date_default_timezone_set('UTC');

@@ -1,6 +1,6 @@
 <?php
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -422,7 +422,7 @@ class messageAPITest extends IznikAPITestCase
         $this->assertEquals(MailRouter::PENDING, $rc);
 
         # Suppress mails.
-        $m = $this->getMockBuilder('Freegle\Iznik\Message')
+        $m = $this->getMockBuilder('Booktastic\Iznik\Message')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('sendOne'))
             ->getMock();
@@ -522,7 +522,7 @@ class messageAPITest extends IznikAPITestCase
         $this->assertEquals(MailRouter::PENDING, $rc);
 
         # Suppress mails.
-        $m = $this->getMockBuilder('Freegle\Iznik\Message')
+        $m = $this->getMockBuilder('Booktastic\Iznik\Message')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('sendOne'))
             ->getMock();
@@ -725,7 +725,7 @@ class messageAPITest extends IznikAPITestCase
         $this->assertEquals(MailRouter::PENDING, $rc);
 
         # Suppress mails.
-        $m = $this->getMockBuilder('Freegle\Iznik\Message')
+        $m = $this->getMockBuilder('Booktastic\Iznik\Message')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm, $id))
             ->setMethods(array('sendOne'))
             ->getMock();

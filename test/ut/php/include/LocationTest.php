@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -195,7 +195,7 @@ class locationTest extends IznikTestCase {
 
         # Change the geometry to something which isn't a point or a polygon.  We'll invent a polygon.  We need to
         # mock this as the convex hull function relies on a PHP extension which is a faff to install.
-        $mock = $this->getMockBuilder('Freegle\Iznik\Location')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Location')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, FALSE])
             ->setMethods(array('convexHull'))
             ->getMock();
@@ -217,7 +217,7 @@ class locationTest extends IznikTestCase {
         );
 
         $l = new Location($this->dbhr, $this->dbhm);
-        $mock = $this->getMockBuilder('Freegle\Iznik\LoggedPDO')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\LoggedPDO')
             ->setConstructorArgs([
                 "mysql:host={$dbconfig['host']};dbname={$dbconfig['database']};charset=utf8",
                 $dbconfig['user'], $dbconfig['pass'], array(), TRUE

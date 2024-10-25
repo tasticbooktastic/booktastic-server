@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -54,7 +54,7 @@ class groupFacebookTest extends IznikTestCase {
         $gid = $g->create('testgroup', Group::GROUP_UT);
         $this->log("Created group $gid");
 
-        $t = $this->getMockBuilder('Freegle\Iznik\GroupFacebook')
+        $t = $this->getMockBuilder('Booktastic\Iznik\GroupFacebook')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm, $gid ])
             ->setMethods(array('getFB'))
             ->getMock();
@@ -126,7 +126,7 @@ class groupFacebookTest extends IznikTestCase {
         $this->log("From user " . $a->getFromuser());
         $sender = User::get($this->dbhr, $this->dbhm, $a->getFromuser());
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\GroupFacebook')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\GroupFacebook')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, $gid])
             ->setMethods(array('getFB'))
             ->getMock();

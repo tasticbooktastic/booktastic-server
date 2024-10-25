@@ -21,7 +21,7 @@ foreach ($auths as $auth) {
     try {
         $dbhm->preExec("UPDATE authorities SET simplified = ST_Simplify(polygon, ?) WHERE id = ?;", [
             $auth['id'],
-            \Freegle\Iznik\LoggedPDO::SIMPLIFY
+            \Booktastic\Iznik\LoggedPDO::SIMPLIFY
         ]);
     } catch (\Exception $e) {
         error_log("Failed " . $e->getMessage() . " {$auth['id']}");

@@ -16,7 +16,7 @@
 //
 // Note: any changes will in effect only be reported ONCE, as the following day the crontab will not have changed.
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

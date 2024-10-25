@@ -3,7 +3,7 @@
 # Run on backup server to demerge a user on live using data from the backup.  Use with astonishing levels of caution.
 #
 # Once you've done this, you can then run user_restore to put the demerged user back.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');
 require_once(BASE_DIR . '/include/config.php');

@@ -3,7 +3,7 @@
 # that fetches the current static site, then splices in sufficient meta tags for the previews to work.
 #
 # The code here has to match message/_id:buildHead() on the client for consistency.
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 # Fake user site.
 # TODO Messy.

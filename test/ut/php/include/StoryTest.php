@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -30,7 +30,7 @@ class StoryTest extends IznikTestCase {
     }
 
     public function testCentral() {
-        $s = $this->getMockBuilder('Freegle\Iznik\Story')
+        $s = $this->getMockBuilder('Booktastic\Iznik\Story')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm ])
             ->setMethods(array('sendIt'))
             ->getMock();

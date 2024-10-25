@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -15,7 +15,7 @@ require_once(UT_DIR . '/../../include/db.php');
 class dashboardTest extends IznikAPITestCase {
     public function testAdmin() {
         # Use a full pathname.  This is a test of our autoloader for coverage.
-        $u = \Freegle\Iznik\User::get($this->dbhr, $this->dbhm);
+        $u = \Booktastic\Iznik\User::get($this->dbhr, $this->dbhm);
         $id = $u->create('Test', 'User', NULL);
         $u = User::get($this->dbhr, $this->dbhm, $id);
         $this->assertGreaterThan(0, $u->addLogin(User::LOGIN_NATIVE, NULL, 'testpw'));

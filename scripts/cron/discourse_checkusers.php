@@ -8,7 +8,7 @@
 // 2022-02-02 Look up altemail for mods
 // 2024-09-01 set bio profile appropriately
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 use \Datetime;
 
 define('BASE_DIR', dirname(__FILE__) . '/../..');

@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 define('IMAGE_DOMAIN', 'images.ilovefreegle.org');
 

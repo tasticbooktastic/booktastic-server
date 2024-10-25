@@ -1,7 +1,7 @@
 <?php
 # Rescale large images in message_attachments
 
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 require_once dirname(__FILE__) . '/../../include/config.php';
 require_once(IZNIK_BASE . '/include/db.php');

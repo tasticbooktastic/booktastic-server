@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 require_once('/etc/iznik.conf');
 require_once(dirname(__FILE__) . '/../../include/config.php');

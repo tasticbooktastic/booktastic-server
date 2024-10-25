@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -36,7 +36,7 @@ class RequestTest extends IznikTestCase {
     }
 
     public function testCentral() {
-        $r = $this->getMockBuilder('Freegle\Iznik\Request')
+        $r = $this->getMockBuilder('Booktastic\Iznik\Request')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm ])
             ->setMethods(array('sendIt'))
             ->getMock();
@@ -61,7 +61,7 @@ class RequestTest extends IznikTestCase {
      * @dataProvider exceptions
      */
     public function testException($count) {
-        $r = $this->getMockBuilder('Freegle\Iznik\Request')
+        $r = $this->getMockBuilder('Booktastic\Iznik\Request')
             ->setConstructorArgs([ $this->dbhr, $this->dbhm ])
             ->setMethods(array('sendIt'))
             ->getMock();

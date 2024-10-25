@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -32,7 +32,7 @@ class pushNotificationsTest extends IznikTestCase {
         $this->assertTrue($u->login('testpw'));
         $this->log("Created $id");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('uthook'))
             ->getMock();
@@ -65,14 +65,14 @@ class pushNotificationsTest extends IznikTestCase {
         $id = $u->create('Test', 'User', NULL);
         $this->log("Created $id");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('uthook'))
             ->getMock();
         $mock->method('uthook')->willReturn(TRUE);
         $mock->executeSend(0, PushNotifications::PUSH_GOOGLE, [], 'test', NULL);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('uthook'))
             ->getMock();
@@ -93,14 +93,14 @@ class pushNotificationsTest extends IznikTestCase {
         $id = $u->create('Test', 'User', NULL);
         $this->log("Created $id");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('uthook'))
             ->getMock();
         $mock->method('uthook')->willReturn(TRUE);
         $mock->executeSend(0, PushNotifications::PUSH_GOOGLE, [], 'test', NULL);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('uthook'))
             ->getMock();
@@ -135,13 +135,13 @@ class pushNotificationsTest extends IznikTestCase {
         $u = User::get($this->dbhr, $this->dbhm);
         $id = $u->create('Test', 'User', NULL);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->enableProxyingToOriginalMethods()
             ->getMock();
         $this->assertEquals(TRUE, $mock->poke($id, [ 'ut' => 1 ], FALSE));
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->enableProxyingToOriginalMethods()
             ->setMethods(array('uthook'))
@@ -156,28 +156,28 @@ class pushNotificationsTest extends IznikTestCase {
         $id = $u->create('Test', 'User', NULL);
         $this->log("Created $id");
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('fsockopen'))
             ->getMock();
         $mock->method('fsockopen')->willThrowException(new \Exception());
         $mock->executePoke($id, [ 'ut' => 1 ], FALSE);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('fputs'))
             ->getMock();
         $mock->method('fputs')->willThrowException(new \Exception());
         $mock->executePoke($id, [ 'ut' => 1 ], FALSE);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('fsockopen'))
             ->getMock();
         $mock->method('fsockopen')->willReturn(NULL);
         $mock->executePoke($id, [ 'ut' => 1 ], FALSE);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\PushNotifications')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\PushNotifications')
             ->setConstructorArgs(array($this->dbhr, $this->dbhm))
             ->setMethods(array('puts'))
             ->getMock();

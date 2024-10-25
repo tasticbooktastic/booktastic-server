@@ -1,0 +1,6 @@
+#!/usr/bin/bash
+#
+# cron script to process the images
+mkdir -p /tmp/images_input/
+mkdir -p /tmp/images_output/
+php8.1 image_parser.php -i /tmp/images_input -o /tmp/images_output

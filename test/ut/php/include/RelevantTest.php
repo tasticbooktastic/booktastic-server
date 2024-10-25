@@ -1,5 +1,5 @@
 <?php
-namespace Freegle\Iznik;
+namespace Booktastic\Iznik;
 
 if (!defined('UT_DIR')) {
     define('UT_DIR', dirname(__FILE__) . '/../..');
@@ -175,7 +175,7 @@ class RelevantTest extends IznikTestCase
 
         # Now send messages - should find these.
         $u->setPrivate('lastrelevantcheck', NULL);
-        $mock = $this->getMockBuilder('Freegle\Iznik\Relevant')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Relevant')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, NULL, TRUE])
             ->setMethods(array('sendOne'))
             ->getMock();
@@ -228,7 +228,7 @@ class RelevantTest extends IznikTestCase
         self::assertNotFalse(strpos($msgs, $id2));
 
         # Exception
-        $mock = $this->getMockBuilder('Freegle\Iznik\Relevant')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Relevant')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, NULL, TRUE])
             ->setMethods(array('sendOne'))
             ->getMock();
@@ -246,7 +246,7 @@ class RelevantTest extends IznikTestCase
         $email = 'ut-' . rand() . '@test.com';
         $u->addEmail($email);
 
-        $mock = $this->getMockBuilder('Freegle\Iznik\Relevant')
+        $mock = $this->getMockBuilder('Booktastic\Iznik\Relevant')
             ->setConstructorArgs([$this->dbhr, $this->dbhm, NULL, TRUE])
             ->setMethods(array('sendOne'))
             ->getMock();
