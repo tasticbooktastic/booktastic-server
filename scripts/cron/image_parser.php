@@ -55,58 +55,77 @@ do {
     foreach ($files as $file) {
         $json = file_get_contents($file);
         $data = json_decode($json, true);
+        $externaluid = pathinfo($file)['filename'];
 
-        foreach ($data['books'] as $book) {
-            error_log(json_encode($book));
+        # We might have multiple shelves with the same image.  We want to update them all.
+        $shelves = $dbhr->preQuery("SELECT id FROM shelves WHERE externaluid = ?;", [ $externaluid ]);
 
-            $authors = [];
+        foreach ($shelves as $shelf) {
+            $shelfid = $shelf['id'];
 
-            if (isset($book['author'])) {
-                $authors = [$book['author']];
-            } else {
-                if (isset($book['authors'])) {
-                    $authors = $book['authors'];
+            foreach ($data['books'] as $book) {
+                $bookid = NULL;
+
+                error_log(json_encode($book));
+
+                $authors = [];
+
+                if (isset($book['author'])) {
+                    $authors = [$book['author']];
+                } else {
+                    if (isset($book['authors'])) {
+                        $authors = $book['authors'];
+                    }
                 }
-            }
 
-            $isbn13 = Utils::presdef('isbn13', $book, null);
+                $isbn13 = Utils::presdef('isbn13', $book, null);
 
-            if ($isbn13 && count($authors)) {
-                $dbhm->preExec(
-                    "INSERT INTO books (title, isbn13) VALUES (?, ?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
-                    [
-                        $book['title'],
-                        $isbn13
-                    ]
-                );
-
-                $bookid = $dbhm->lastInsertId();
-
-                foreach ($authors as $author) {
+                if ($isbn13 && count($authors)) {
                     $dbhm->preExec(
-                        "INSERT INTO authors (name) VALUES (?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
+                        "INSERT INTO books (title, isbn13) VALUES (?, ?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
                         [
-                            $author
+                            $book['title'],
+                            $isbn13
                         ]
                     );
 
-                    $authorid = $dbhm->lastInsertId();
+                    $bookid = $dbhm->lastInsertId();
 
-                    $dbhm->preExec(
-                        "INSERT INTO books_authors (bookid, authorid) VALUES (?, ?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
-                        [
-                            $bookid,
-                            $authorid
-                        ]
-                    );
+                    foreach ($authors as $author) {
+                        $dbhm->preExec(
+                            "INSERT INTO authors (name) VALUES (?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
+                            [
+                                $author
+                            ]
+                        );
+
+                        $authorid = $dbhm->lastInsertId();
+
+                        $dbhm->preExec(
+                            "INSERT INTO books_authors (bookid, authorid) VALUES (?, ?) ON DUPLICATE KEY UPDATE id = LAST_INSERT_ID(id);",
+                            [
+                                $bookid,
+                                $authorid
+                            ]
+                        );
+                    }
+                }
+
+                if ($bookid) {
+                    $dbhm->preExec("INSERT INTO shelves_books (shelfid, bookid) VALUES (?, ?);", [
+                        $shelfid,
+                        $bookid
+                    ]);
                 }
             }
+
+            $dbhm->preExec("UPDATE shelves SET processed = 1 WHERE id = ?;", [
+                $shelfid
+            ]);
         }
-
-        $dbhm->preExec("UPDATE shelves SET processed = 1 WHERE externaluid = ?;", [pathinfo($file)['filename']]);
     }
 
     sleep(1);
-} while (true);
+} while (true && $input);
 
 Utils::unlockScript($lockh);
